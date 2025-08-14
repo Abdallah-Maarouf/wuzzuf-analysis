@@ -128,49 +128,25 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Data Science specific
-data/raw/
-*.csv
-*.xlsx
-*.xls
-*.json
-*.parquet
-*.h5
-*.hdf5
-*.pkl
-*.pickle
+# Database credentials and sensitive files
+sql/.env
+*.env
+config/database.ini
+config/secrets.ini
 
-# Machine Learning models
-*.model
-*.pkl
-models/
+# Database logs and reports
+sql/*.log
+sql/*_report.txt
+sql/data_insertion_report.txt
 
-# Visualization outputs
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
-plots/
-figures/
-
-# Power BI files
-*.pbix
-*.pbit
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# IDE specific
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS specific
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -178,9 +154,3 @@ figures/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
-temp/
-tmp/

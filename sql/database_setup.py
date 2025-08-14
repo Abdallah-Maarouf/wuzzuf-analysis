@@ -12,6 +12,8 @@ import pandas as pd
 import logging
 from typing import Optional, Dict, Any
 import time
+import getpass
+from pathlib import Path
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -23,36 +25,83 @@ class DatabaseManager:
     """
     
     def __init__(self, 
-                 host: str = 'localhost',
-                 port: int = 5432,
-                 username: str = 'postgres',
+                 host: str = None,
+                 port: int = None,
+                 username: str = None,
                  password: str = None,
-                 database: str = 'wuzzuf'):
+                 database: str = None):
         """
         Initialize database manager with connection parameters
         
         Args:
-            host: Database host (default: localhost)
-            port: Database port (default: 5432)
-            username: Database username (default: postgres)
-            password: Database password (will prompt if None)
-            database: Database name (default: wuzzuf)
+            host: Database host (default: from env or localhost)
+            port: Database port (default: from env or 5432)
+            username: Database username (default: from env or postgres)
+            password: Database password (default: from env or prompt)
+            database: Database name (default: from env or wuzzuf)
         """
-        self.host = host
-        self.port = port
-        self.username = username
+        # Load from environment variables first, then use defaults
+        self.host = host or os.getenv('POSTGRES_HOST', 'localhost')
+        self.port = port or int(os.getenv('POSTGRES_PORT', '5432'))
+        self.username = username or os.getenv('POSTGRES_USER', 'postgres')
         self.password = password or os.getenv('POSTGRES_PASSWORD')
-        self.database = database
+        self.database = database or os.getenv('POSTGRES_DATABASE', 'wuzzuf')
         self.engine = None
         self.connection_string = None
+        
+        # Load .env file if it exists
+        self._load_env_file()
+    
+    def _load_env_file(self):
+        """Load environment variables from .env file if it exists"""
+        env_file = Path(__file__).parent / '.env'
+        if env_file.exists():
+            try:
+                with open(env_file, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith('#') and '=' in line:
+                            key, value = line.split('=', 1)
+                            key = key.strip()
+                            value = value.strip().strip('"').strip("'")
+                            if key and not os.getenv(key):  # Don't override existing env vars
+                                os.environ[key] = value
+                
+                # Update instance variables if they weren't explicitly set
+                if not self.password:
+                    self.password = os.getenv('POSTGRES_PASSWORD')
+                    
+            except Exception as e:
+                logger.warning(f"Could not load .env file: {e}")
+    
+    def _get_password(self) -> str:
+        """Get password securely from environment or prompt user"""
+        if self.password:
+            return self.password
+        
+        # Try to get from environment
+        env_password = os.getenv('POSTGRES_PASSWORD')
+        if env_password:
+            self.password = env_password
+            return self.password
+        
+        # Prompt user securely
+        try:
+            self.password = getpass.getpass(f"Enter password for PostgreSQL user '{self.username}': ")
+            return self.password
+        except KeyboardInterrupt:
+            logger.error("Password input cancelled")
+            raise
+        except Exception as e:
+            logger.error(f"Error getting password: {e}")
+            raise
         
     def _build_connection_string(self, database: str = None) -> str:
         """Build PostgreSQL connection string"""
         db_name = database or self.database
-        if not self.password:
-            self.password = input(f"Enter password for PostgreSQL user '{self.username}': ")
+        password = self._get_password()
         
-        return f"postgresql://{self.username}:{self.password}@{self.host}:{self.port}/{db_name}"
+        return f"postgresql://{self.username}:{password}@{self.host}:{self.port}/{db_name}"
     
     def create_database(self) -> bool:
         """
@@ -63,11 +112,12 @@ class DatabaseManager:
         """
         try:
             # Connect to default postgres database to create wuzzuf database
+            password = self._get_password()
             conn = psycopg2.connect(
                 host=self.host,
                 port=self.port,
                 user=self.username,
-                password=self.password,
+                password=password,
                 database='postgres'
             )
             conn.autocommit = True
