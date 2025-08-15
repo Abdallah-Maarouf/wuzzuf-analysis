@@ -1,0 +1,120 @@
+company_industry,job_count,company_count,percentage
+internet,5052,297,20.12
+computer software,4729,663,18.83
+information technology & services,4462,921,17.77
+staffing & recruiting,3699,593,14.73
+financial services,1227,257,4.89
+hospital & health care,828,160,3.3
+marketing & advertising,465,137,1.85
+management consulting,359,75,1.43
+computer & network security,317,57,1.26
+insurance,286,86,1.14
+"health, wellness & fitness",283,59,1.13
+real estate,215,46,0.86
+retail,182,47,0.72
+biotechnology,157,54,0.63
+defense & space,147,21,0.59
+"leisure, travel & tourism",131,8,0.52
+pharmaceuticals,120,48,0.48
+education management,114,26,0.45
+consumer goods,113,33,0.45
+medical device,108,36,0.43
+information services,82,26,0.33
+automotive,79,23,0.31
+human resources,78,35,0.31
+wholesale,76,7,0.3
+e-learning,75,32,0.3
+telecommunications,75,40,0.3
+consumer electronics,69,17,0.27
+banking,68,23,0.27
+logistics & supply chain,64,25,0.25
+consumer services,64,18,0.25
+chemicals,63,9,0.25
+hospitality,60,13,0.24
+apparel & fashion,42,9,0.17
+publishing,42,9,0.17
+entertainment,37,16,0.15
+electrical & electronic manufacturing,36,20,0.14
+market research,35,14,0.14
+computer games,34,13,0.14
+mental health care,34,14,0.14
+mechanical or industrial engineering,30,13,0.12
+renewables & environment,29,20,0.12
+oil & energy,29,7,0.12
+research,28,16,0.11
+legal services,27,10,0.11
+non-profit organization management,25,15,0.1
+food & beverages,25,15,0.1
+professional training & coaching,25,9,0.1
+aviation & aerospace,24,6,0.1
+online media,24,16,0.1
+medical practice,22,9,0.09
+transportation/trucking/railroad,21,13,0.08
+wine & spirits,21,2,0.08
+food production,20,4,0.08
+broadcast media,18,7,0.07
+outsourcing/offshoring,18,9,0.07
+industrial automation,18,11,0.07
+higher education,18,13,0.07
+military,17,1,0.07
+computer networking,17,7,0.07
+accounting,13,7,0.05
+furniture,12,2,0.05
+civil engineering,12,3,0.05
+government administration,11,6,0.04
+facilities services,11,4,0.04
+machinery,10,6,0.04
+music,10,4,0.04
+construction,10,6,0.04
+cosmetics,10,5,0.04
+gambling & casinos,10,3,0.04
+media production,10,6,0.04
+fundraising,9,4,0.04
+business supplies & equipment,9,5,0.04
+public safety,9,5,0.04
+design,8,6,0.03
+environmental services,8,5,0.03
+public relations & communications,8,3,0.03
+veterinary,8,5,0.03
+venture capital & private equity,7,3,0.03
+paper & forest products,7,2,0.03
+international trade & development,7,7,0.03
+events services,7,6,0.03
+political organization,6,2,0.02
+investment management,6,5,0.02
+textiles,6,2,0.02
+semiconductors,6,5,0.02
+building materials,6,2,0.02
+commercial real estate,6,4,0.02
+airlines/aviation,5,5,0.02
+wireless,5,4,0.02
+farming,5,4,0.02
+sporting goods,5,4,0.02
+individual & family services,5,2,0.02
+photography,5,2,0.02
+security & investigations,5,3,0.02
+2 school alumni,4,1,0.02
+capital markets,4,4,0.02
+utilities,4,3,0.02
+restaurants,4,4,0.02
+packaging & containers,4,4,0.02
+fine art,3,1,0.01
+translation & localization,3,3,0.01
+computer hardware,3,2,0.01
+law practice,3,3,0.01
+writing & editing,2,1,0.01
+program development,2,1,0.01
+printing,2,1,0.01
+motion pictures & film,2,2,0.01
+mining & metals,2,2,0.01
+luxury goods & jewelry,2,2,0.01
+government relations,2,2,0.01
+sports,1,1,0.0
+primary/secondary education,1,1,0.0
+newspapers,1,1,0.0
+think tanks,1,1,0.0
+nanotechnology,1,1,0.0
+libraries,1,1,0.0
+"glass, ceramics & concrete",1,1,0.0
+architecture & planning,1,1,0.0
+1 school alumni,1,1,0.0
