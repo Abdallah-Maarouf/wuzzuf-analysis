@@ -154,3 +154,6 @@ sql/data_insertion_report.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Kiro IDE files (keep local only)
+.kiro/
